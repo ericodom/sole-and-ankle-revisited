@@ -4,7 +4,7 @@ import styled from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import { X } from "react-feather";
 
-import { COLORS,  QUERIES } from '../../constants';
+import {  QUERIES } from '../../constants';
 
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
@@ -28,7 +28,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
         </Row>
         
         <NavWrapper>
-          <MenuLink color={COLORS.secondary} href="/sale">Sale</MenuLink>
+          <MenuLink color={'var(--color-secondary)'} href="/sale">Sale</MenuLink>
           <MenuLink href="/new">New&nbsp;Releases</MenuLink>
           <MenuLink href="/men">Men</MenuLink>
           <MenuLink href="/women">Women</MenuLink>
@@ -119,11 +119,11 @@ const MenuLink = styled.a`
   text-decoration: none;
   padding: 11px 0;
   text-transform: uppercase;
-  color: ${p => p.color ? p.color : COLORS.gray[900]};
+  color: ${p => p.color ? p.color : 'var(--color-gray-900)'};
 `;
 
 const FooterLink = styled.a`
-  color: ${COLORS.gray[700]};
+  color: var(--color-gray-700);
   line-height: 16.44px;
   text-decoration: none;
   font-weight: 500;
