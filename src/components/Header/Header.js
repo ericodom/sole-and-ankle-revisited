@@ -80,6 +80,7 @@ const MainHeader = styled.div`
 
   @media ${QUERIES.mobileAndDown} {
     padding-right: 16px;
+    padding-left: 16px;
   }
 
 `;
@@ -140,6 +141,10 @@ const BreadcrumbsWrapper = styled.div`
   
   @media ${QUERIES.tabletAndDown} {
     display: block;
+  }
+
+  @media ${QUERIES.mobileAndDown} {
+    padding-left: 16px;
   }
 `;
 

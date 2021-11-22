@@ -25,6 +25,10 @@ const Main = styled.main`
     padding-top: 0;
   }
 
+  @media ${QUERIES.mobileAndDown} {
+    padding: 0 16px;
+  }
+
 `;
 
 export default App;

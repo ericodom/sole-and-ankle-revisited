@@ -69,7 +69,7 @@ const Content = styled(DialogContent)`
   top: 0;
   right: 0;
   bottom: 0;
-  width: 85%;
+  width: min(85%, 400px);
   padding: 2rem 2rem 1rem 2rem;
   display: flex;
   flex-direction: column;
