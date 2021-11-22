@@ -1,18 +1,16 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS, WEIGHTS } from '../../constants';
+import { COLORS, WEIGHTS, QUERIES } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
+import UnstyledButton from '../UnstyledButton';
+import Icon from '../Icon';
+import Breadcrumbs from '../Breadcrumbs';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
-
-  // For our mobile hamburger menu, we'll want to use a button
-  // with an onClick handler, something like this:
-  //
-  // <button onClick={() => setShowMobileMenu(true)}>
 
   return (
     <header>
@@ -21,6 +19,7 @@ const Header = () => {
         <Side>
           <Logo />
         </Side>
+
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -29,10 +28,37 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
-        <Side />
+        
+        
+        <Side>
+          <MobileNav>
+            <UnstyledButton>
+              <Icon id="shopping-bag" strokeWidth={2} size={24} />
+            </UnstyledButton>
+
+            <UnstyledButton>
+              <Icon id="search" strokeWidth={2} size={24} />
+            </UnstyledButton>
+            <UnstyledButton onClick={() => setShowMobileMenu(true)}>
+              <Icon id="menu" strokeWidth={2} size={24} />
+            </UnstyledButton>
+            
+          </MobileNav>
+        </Side>
       </MainHeader>
 
+      <BreadcrumbsWrapper>
+        <Breadcrumbs>
+          <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+          <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+          <Breadcrumbs.Crumb href="/sale/shoes">
+            Shoes
+          </Breadcrumbs.Crumb>
+        </Breadcrumbs>
+      </BreadcrumbsWrapper>
+
       <MobileMenu
+        onClick={() => setShowMobileMenu(true)}
         isOpen={showMobileMenu}
         onDismiss={() => setShowMobileMenu(false)}
       />
@@ -46,12 +72,46 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+
+  @media ${QUERIES.tabletAndDown} {
+    align-items: center;
+    padding-right: 29px;
+  }
+
+  @media ${QUERIES.mobileAndDown} {
+    padding-right: 16px;
+  }
+
 `;
 
 const Nav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
+
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
+  }
+  
+`;
+
+const MobileNav = styled.nav`
+  justify-content: flex-end;
+  align-items: baseline;
+  
+  margin: 0px 0px 0px auto;
+  display: none;
+  
+  @media ${QUERIES.tabletAndDown} {
+    display: flex;
+    gap: 40px;
+  }
+  
+  @media ${QUERIES.mobileAndDown} {
+    display: flex;
+    gap: 24px;
+  }
+
 `;
 
 const Side = styled.div`
@@ -69,5 +129,15 @@ const NavLink = styled.a`
     color: ${COLORS.secondary};
   }
 `;
+
+const BreadcrumbsWrapper = styled.div`
+  display: none;
+  padding: 48px 0 8px 32px;
+  
+  @media ${QUERIES.tabletAndDown} {
+    display: block;
+  }
+`;
+
 
 export default Header;

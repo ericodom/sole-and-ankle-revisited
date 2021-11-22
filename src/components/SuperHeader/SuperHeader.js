@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS } from '../../constants';
+import { COLORS, QUERIES } from '../../constants';
 
 import SearchInput from '../SearchInput';
 import UnstyledButton from '../UnstyledButton';
@@ -15,9 +15,9 @@ const SuperHeader = () => {
       </MarketingMessage>
       <SearchInput />
       <HelpLink href="/help">Help</HelpLink>
-      <UnstyledButton>
+      <ShoppingBag>
         <Icon id="shopping-bag" strokeWidth={1} />
-      </UnstyledButton>
+      </ShoppingBag>
     </Wrapper>
   );
 };
@@ -32,11 +32,19 @@ const Wrapper = styled.div`
   height: 40px;
   padding-left: 32px;
   padding-right: 32px;
+
+  @media ${QUERIES.tabletAndDown} {
+    height: 4px;
+  }
 `;
 
 const MarketingMessage = styled.span`
   color: ${COLORS.white};
   margin-right: auto;
+
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
+  }
 `;
 
 const HelpLink = styled.a`
@@ -46,6 +54,16 @@ const HelpLink = styled.a`
 
   &:not(:focus-visible) {
     outline: none;
+  }
+
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
+  }
+`;
+
+const ShoppingBag = styled(UnstyledButton)`
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
   }
 `;
 
