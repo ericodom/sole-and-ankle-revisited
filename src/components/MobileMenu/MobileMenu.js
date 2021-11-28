@@ -40,6 +40,8 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
             <FooterLink href="/terms">Terms and Conditions</FooterLink>
             <FooterLink href="/privacy">Privacy Policy</FooterLink>
             <FooterLink href="/contact">Contact Us</FooterLink>
+            <FooterLink href="/contact">Contact Us</FooterLink>
+            <FooterLink href="/contact">Contact Us</FooterLink>
           </FooterWrapper>
         </Row>
         
